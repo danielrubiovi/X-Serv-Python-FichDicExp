@@ -10,9 +10,9 @@ for usuario in lista_lineas:
     shell = lista_split[-1][:-1]
     dic_logins[login] = [shell]
 
-print ('root', dic_logins['root'])
+print ('root:', dic_logins['root'])
 try:
-    print ('imaginario', dic_logins['imaginario'])
+    print ('imaginario:', dic_logins['imaginario'])
 except:
     print ("ERROR, user don't found")
 
