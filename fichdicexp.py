@@ -1,21 +1,21 @@
-#!/usr/bin/python3
-fich = open("/etc/passwd", "r")
-identificadores = fich.readlines()
-fich.close()
-usuarios = {}
+#!-/usr/bin/python3
 
-for itiner in range(0, len(identificadores)):
-	i = 0
-	n = -1
-	while identificadores[itiner][i] != ":":
-		i = i + 1
-	while identificadores[itiner][n] != ":":
-		n = n - 1
-	usuarios[identificadores[itiner][0:i]] = identificadores[itiner][n+1:-1]
+fich = open('/etc/passwd','r')
+lista_lineas = fich.readlines()
+dic_logins = {}
 
-print("root: " + usuarios['root'])
+for usuario in lista_lineas:
+    lista_split = usuario.split(":")
+    login = lista_split[0]
+    shell = lista_split[-1][:-1]
+    dic_logins[login] = [shell]
+
+print ('root', dic_logins['root'])
 try:
-	print("imaginario: " + usuarios['imaginario'])
-except KeyError:
-	print("No existe imaginario")
+    print ('imaginario', dic_logins['imaginario'])
+except:
+    print ("ERROR, user don't found")
 
+print ('Numero de usuarios: ', len(dic_logins))
+
+fich.close()
