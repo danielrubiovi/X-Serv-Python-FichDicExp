@@ -13,6 +13,7 @@ for usuario in lista_lineas:
 print ('root: ', dic_logins['root'])
 try:
     print ('imaginario: ', dic_logins['imaginario'])
+
 except:
     print ("ERROR, user don't found")
 
